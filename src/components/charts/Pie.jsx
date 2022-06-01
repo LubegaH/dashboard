@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Button = () => {
+const Pie = () => {
   return <div>PieChart</div>;
 };
 
