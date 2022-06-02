@@ -5,7 +5,7 @@ import { BsChatLeft } from 'react-icons/bs';
 import { RiNotification3Line } from 'react-icons/ri';
 import { MdKeyboardArrowDown } from 'react-icons/md';
 import { TooltipComponent } from '@syncfusion/ej2-react-popups';
-import avatar from '../data/avatar.jpg';
+import Ham_profile from '../data/Ham_profile.jpeg';
 
 import { Cart, Chat, Notification, UserProfile } from '.';
 import { useStateContext } from '../context/ContextProvider';
@@ -31,7 +31,8 @@ const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
 const handleClick = () => {};
 
 const Navbar = () => {
-  const { activeMenu, setActiveMenu } = useStateContext();
+  const { activeMenu, setActiveMenu, isClicked, setIsClicked, handleClick } =
+    useStateContext();
   return (
     // Navbar menu
     <div className='flex justify-between p-2 md:mx-6 relative'>
@@ -67,7 +68,7 @@ const Navbar = () => {
             className='flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg'
             onClick={() => handleClick('userProfile')}
           >
-            <img src={avatar} className='rounded-full w-8 h-8'></img>
+            <img src={Ham_profile} className='rounded-full w-8 h-8'></img>
             <p>
               <span className='text-gray-400 text-14'>Hi, </span>{' '}
               <span className='text-gray-400 font-bold ml-1 text-14'>Ham</span>
@@ -75,6 +76,10 @@ const Navbar = () => {
             <MdKeyboardArrowDown className='text-gray-400 text-14' />
           </div>
         </TooltipComponent>
+        {isClicked.cart && <Cart />}
+        {isClicked.chat && <Chat />}
+        {isClicked.notification && <Notification />}
+        {isClicked.userProfile && <UserProfile />}
       </div>
     </div>
   );
